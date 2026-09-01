@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {createInitialState,advanceDay,applyFocus,resolveBattle} from './game.mjs';
+const s=createInitialState();
+assert.equal(s.date,'1643-01-01');
+assert.equal(s.countries.ming.stability,62);
+const n=advanceDay(s);
+assert.equal(n.date,'1643-01-02');
+assert.ok(n.countries.ming.food<s.countries.ming.food);
+const f=applyFocus(n,'ming_finance_reform');
+assert.equal(f.countries.ming.focuses.ming_finance_reform,true);
+assert.equal(f.countries.ming.stability,Math.min(100,n.countries.ming.stability+10));
+assert.equal(resolveBattle({attackerTroops:50000,defenderTroops:30000,attackerMorale:.9,defenderMorale:.7,terrain:1}).winner,'attacker');
+console.log('game tests passed');
