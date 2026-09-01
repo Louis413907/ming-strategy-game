@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const html=fs.readFileSync('index.html','utf8');
+const js=fs.readFileSync('main.js','utf8');
+assert.match(html,/id="next"/);
+assert.match(html,/main\.js/);
+assert.doesNotMatch(js,/游戏启动成功/);
+assert.match(js,/addEventListener/);
+assert.match(js,/function render/);
+console.log('ui smoke test passed');

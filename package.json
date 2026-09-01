@@ -1,1 +1,1 @@
-{"name":"ming-strategy-game","version":"0.2.0","type":"module","scripts":{"test":"node game.test.mjs"}}
+{"name":"ming-strategy-game","version":"0.2.1","type":"module","scripts":{"test":"node game.test.mjs && node ui.test.mjs"}}
